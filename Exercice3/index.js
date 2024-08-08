@@ -1,4 +1,19 @@
-// Créez votre fonction ici
+/**
+ * function calculateAverage
+ * @param {Array} numbers - An array of numbers
+ * @returns {number|string} average of the numbers
+ */
+function calculateAverage(numbers) {
+  if (!numbers) {
+    return 'No numbers to calculate average';
+  }
+  
+  let sum = 0;
+  for (let number of numbers) {
+    sum += number;
+  }
+  return sum / numbers.length;
+}
 
 // Exemples d'utilisation de la fonction
 console.log(calculateAverage([5, 10, 15])) // retourne 10
