@@ -4,7 +4,8 @@
  * @returns {number|string} average of the numbers
  */
 function calculateAverage(numbers) {
-  if (!numbers) {
+  // test if numbers is not an array or is empty
+  if (!Array.isArray(numbers) || numbers.length === 0) {
     return 'No numbers to calculate average';
   }
   

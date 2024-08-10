@@ -5,6 +5,16 @@
  * @returns {String} pairs of numbers
  */
 function pairNumbers(start, end) { 
+  // test if start and end are defined
+  if (isNaN(start) || isNaN(end)) {
+    return '';
+  }
+
+  // test if start and end are integers or strings with integers
+  if (!Number.isInteger(parseInt(start)) || !Number.isInteger(parseInt(end))) {
+    return '';
+  }
+
   // test if min is greater than max
   if (start > end) {
     return '';
