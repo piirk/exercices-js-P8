@@ -6,6 +6,7 @@
 function calculateAverage(numbers) {
   // test if numbers is not an array or is empty
   if (!Array.isArray(numbers) || numbers.length === 0) {
+    // throw error
     return 'No numbers to calculate average';
   }
   

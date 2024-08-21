@@ -29,4 +29,10 @@ function pairNumbers(start, end) {
   return result.slice(0, -1);
 }
 
+// test
+console.log(pairNumbers(1, 10)); // 2,4,6,8,10
+console.log(pairNumbers('1', '10')); // 2,4,6,8,10
+console.log(pairNumbers(1, 10)); // 2,4,6,8,10
+console.log(pairNumbers(1, 10)); // 2,4,6,8,10
+
 export default pairNumbers

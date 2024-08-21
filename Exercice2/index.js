@@ -13,19 +13,19 @@ function calculate(a, b, operator) {
     return 'Invalid input';
   }
   
-  if (operator === '+') {
-    return a + b;
-  } else if (operator === '-') {
-    return a - b;
-  } else if (operator === '*') {
-    return a * b;
-  } else if (operator === '/') {
-    if (b === 0) {
-      return 'Division by zero is not allowed';
-    }
-    return a / b;
-  } else {
-    return 'Invalid operator';
+  switch (operator) {
+    case '+':
+      return a + b;
+    case '-':
+      return a - b;
+    case '*':
+      return a * b;
+    case '/':
+       return (b === 0) ? 'Division by zero is not allowed' : a / b;
+        //return 'Division by zero is not allowed';
+        //throw new Error('Division by zero is not allowed');
+    default:
+      return 'Invalid operator';
   }
 }
 
