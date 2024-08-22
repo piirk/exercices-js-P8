@@ -6,16 +6,12 @@ function convertToBinary() {
   const binaryResult = document.getElementById('binaryResult');
   binaryResult.innerHTML = '';
 
-  // test if decimal is not a number
-  if (isNaN(decimal) && isNaN(parseInt(decimal))) {
+  // test if decimal is not a number and not an integer 
+  if (!Number(decimal) || decimal % 1 !== 0) {
     return;
   } else {
     // convert decimal to binary
-    let binary = '';
-    while (decimal > 0) {
-      binary = (decimal % 2) + binary;
-      decimal = Math.floor(decimal / 2);
-    }
+    let binary = Number(decimal).toString(2);
 
     binaryResult.innerHTML = binary;
   }

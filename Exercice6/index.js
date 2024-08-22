@@ -5,13 +5,12 @@ let isResult = false;
  */
 function appendToDisplay(inputValue) {
     const display = document.getElementById('display');
+    
     let lastCharacter = display.value[display.value.length - 1];
-
     const isInputNumber = Number(inputValue) || inputValue === '0';
 
     if (isResult && isInputNumber) {
         display.value = '';
-        isResult = false;
     }
 
     if (display.value === 'Division by zero is not allowed' || display.value === 'Invalid operation') {
