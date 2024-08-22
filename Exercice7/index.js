@@ -11,8 +11,6 @@ function convertToBinary() {
     return;
   } else {
     // convert decimal to binary
-    let binary = Number(decimal).toString(2);
-
-    binaryResult.innerHTML = binary;
+    binaryResult.innerHTML = Number(decimal).toString(2);
   }
 }
