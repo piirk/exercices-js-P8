@@ -9,29 +9,32 @@ function appendToDisplay(inputValue) {
     let lastCharacter = display.value[display.value.length - 1];
     const isInputNumber = Number(inputValue) || inputValue === '0';
 
-    if (isResult && isInputNumber) {
-        display.value = '';
+    if (isResult) {
+        if (isInputNumber) { // if the input is a number and the result is displayed, we clear the display
+            display.value = inputValue;
+        } else { // if the input is not a number and the result is displayed, we append the input to the display
+            if (display.value === 'Division by zero is not allowed' || display.value === 'Invalid operation') {
+                display.value = '0' + inputValue;
+            } else {
+                display.value += inputValue;
+            }
+        }
+    } else {
+        if (isInputNumber) { // if the input is a number and the result is not displayed, we append the input to the display
+            if (display.value === '0') {
+                display.value = inputValue;
+            } else {
+                display.value += inputValue;
+            }
+        } else { // if the input is not a number and the result is not displayed, we append the input to the display
+            if (Number(lastCharacter) || lastCharacter === '0') {
+                display.value += inputValue;
+            } else {
+                display.value = display.value.slice(0, -1) + inputValue;
+            }
+        }
     }
 
-    if (display.value === 'Division by zero is not allowed' || display.value === 'Invalid operation') {
-        display.value = '0';
-        lastCharacter = '0';
-    }
-
-    if (display.value === '0' && isInputNumber) {
-        display.value = '';
-    }
-
-    if (display.value === '' && !isInputNumber) {
-        display.value = '0';
-        lastCharacter = '0';
-    }
-
-    if (!isInputNumber && (!Number(lastCharacter) && lastCharacter !== '0')) {
-        display.value = display.value.slice(0, -1);
-    }
-
-    display.value += inputValue;
     isResult = false;
 }
 
@@ -49,14 +52,20 @@ function clearDisplay() {
 function calculateResult() {
     const display = document.getElementById('display');
 
+    isResult = true;
+
     try {
-        if (eval(display.value) === Infinity) {
+        if (eval(display.value) === Infinity || eval(display.value) === -Infinity) {
             display.value = 'Division by zero is not allowed';
             return;
         }
 
+        if (isNaN(eval(display.value))) {
+            display.value = 'Invalid operation';
+            return;
+        }
+
         display.value = eval(display.value);
-        isResult = true;
     } catch (error) {
         display.value = 'Invalid operation';
     }
