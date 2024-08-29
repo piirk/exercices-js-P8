@@ -13,25 +13,13 @@ function appendToDisplay(inputValue) {
         if (isInputNumber) { // if the input is a number and the result is displayed, we clear the display
             display.value = inputValue;
         } else { // if the input is not a number and the result is displayed, we append the input to the display
-            if (display.value === 'Division by zero is not allowed' || display.value === 'Invalid operation') {
-                display.value = '0' + inputValue;
-            } else {
-                display.value += inputValue;
-            }
+            display.value = (display.value === 'Division by zero is not allowed' || display.value === 'Invalid operation') ? '0' + inputValue : display.value + inputValue;
         }
     } else {
         if (isInputNumber) { // if the input is a number and the result is not displayed, we append the input to the display
-            if (display.value === '0') {
-                display.value = inputValue;
-            } else {
-                display.value += inputValue;
-            }
+            display.value = display.value === '0' ? inputValue : display.value + inputValue;
         } else { // if the input is not a number and the result is not displayed, we append the input to the display
-            if (Number(lastCharacter) || lastCharacter === '0') {
-                display.value += inputValue;
-            } else {
-                display.value = display.value.slice(0, -1) + inputValue;
-            }
+            display.value = (Number(lastCharacter) || lastCharacter === '0') ? display.value + inputValue : display.value.slice(0, -1) + inputValue;
         }
     }
 
